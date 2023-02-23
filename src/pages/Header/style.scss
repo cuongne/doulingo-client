@@ -1,0 +1,24 @@
+@import "@/scss/index.scss";
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  padding: toRem(16);
+  border-bottom: toRem(2) solid #ddd;
+  .logo {
+    font-size: toRem(30);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-style: italic;
+    color: $main-color;
+  }
+  .info-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: toRem(16);
+    .name {
+      font-weight: 500;
+      color: $main-color;
+    }
+  }
+}

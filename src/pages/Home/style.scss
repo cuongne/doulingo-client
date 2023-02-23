@@ -1,0 +1,25 @@
+@import "@/scss/index.scss";
+.home-container {
+  padding: toRem(12);
+  display: flex;
+  gap: toRem(24);
+  .menu {
+    display: flex;
+    gap: toRem(8);
+    flex-direction: column;
+    .item {
+      display: flex;
+      padding: toRem(6) toRem(24);
+      border-radius: 5px;
+      border:1px solid #ddd;
+      gap: toRem(16);
+      align-items: center;
+      font-size: toRem(24);
+      color:#0B3954;
+      transition: all 0.3s;
+      &:hover{
+        background-color: rgba(240, 236, 236, 0.628);
+      }
+    }
+  }
+}

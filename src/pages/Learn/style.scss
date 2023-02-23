@@ -1,0 +1,61 @@
+@import "@/scss/index.scss";
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title {
+    display: flex;
+    flex-direction: column;
+    color: #cd7900;
+    .level {
+      font-size: toRem(24);
+      font-weight: 500;
+    }
+  }
+  
+}
+.popover{
+  position: absolute;
+  top: 0;
+  border-radius: toRem(10);
+  padding: toRem(20);
+  background-color: #cd7900;
+}
+.learn-container {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(30);
+  margin: toRem(16) 0;
+  
+  .container-wrap {
+    position: relative;
+    .learn-step {
+      position: relative;
+      cursor: pointer;
+      width: toRem(70);
+      height: toRem(70);
+      border-radius: 50%;
+      background-color: #ffd333;
+      border: 5px solid #4d3c3c5f;
+      box-shadow: 0 8px 3px 1px #818080;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.1s;
+    }
+   
+    .arrow {
+      position: absolute;
+      z-index: 999;
+      border-radius:toRem(10);
+      width: toRem(250);
+      height: toRem(80);
+      background-color: #ffd333;
+    }
+  }
+  .click {
+    transform: translateY(4px);
+    box-shadow: unset;
+  }
+}

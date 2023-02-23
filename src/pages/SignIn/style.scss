@@ -1,0 +1,13 @@
+@import "@/scss/index.scss";
+.container-login {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-top: toRem(28);
+    form{
+        width: toRem(600);
+    }
+  .label {
+    font-size: toRem(16);
+  }
+}
