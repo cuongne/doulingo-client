@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/css-reset": "^2.0.13",
     "@chakra-ui/icons": "^2.0.12",
     "@chakra-ui/react": "^2.3.6",
     "@craco/craco": "^6.4.5",
@@ -22,8 +23,8 @@
     "classnames": "^2.3.2",
     "framer-motion": "^6.2.9",
     "query-string": "^7.1.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "react-hook-form": "^7.39.1",
     "react-icons": "^3.0.0",
     "react-redux": "^8.0.4",
@@ -55,6 +56,7 @@
   },
   "devDependencies": {
     "@types/node-sass": "^4.11.3",
-    "node-sass": "^7.0.3"
+    "node-sass": "^7.0.3",
+    "sass-loader": "^13.2.1"
   }
 }

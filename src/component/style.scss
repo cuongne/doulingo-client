@@ -1,0 +1,19 @@
+@import "@/scss/index.scss";
+
+.content-popover {
+  min-width: toRem(150);
+  min-height: toRem(40);
+  padding: toRem(20);
+  border-radius: toRem(8);
+  background-color: #edb303;
+  &:after {
+    content: " ";
+    border-top: 11px solid #edb303;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateY(100%);
+  }
+}

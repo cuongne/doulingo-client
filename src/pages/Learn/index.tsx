@@ -1,57 +1,40 @@
+import PopoverCustom from '@/component/PopoverCustom';
 import { CheckIcon } from '@chakra-ui/icons';
-import { Box, Center, Flex, Tooltip } from '@chakra-ui/react';
+import { Box, Button, Center, Flex, Portal } from '@chakra-ui/react';
 import classNames from 'classnames';
-import { SyntheticEvent, useRef, useState } from 'react';
 import './style.scss';
 type Props = {}
 
 type ItemType = {
   id: number;
   position: number;
-  name: string
+  name: string,
+  detail: string
 }
 type DataType = {
-  id: number; name: string; position: number
+  id: number; name: string; position: number, detail: string
+}
+const Items = (props: ItemType) => {
+  const { id, position, name, detail } = props
+
+  return (
+    <PopoverCustom preferredPosition="bottom-center" content={
+      <div className="custom-content">
+        {detail}
+        <Button className="custom-button">Bắt đầu</Button>
+      </div>
+    }>
+      <div className={classNames("learn-step")}
+        data-left={position}
+        data-text={name}
+      >
+        <CheckIcon w={6} h={6} color="#f89200" />
+      </div >
+    </PopoverCustom>
+  )
 }
 const Learn = (props: Props) => {
-  const [activeKey, setActiveKey] = useState<number>(0)
-  const popOver = useRef<HTMLDivElement>(null)
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>, key: number) => {
-    console.log(e)
-    if (popOver?.current) {
-      console.log(popOver.current.style)
-      popOver!.current.style.top = `${e?.pageY}px`
-      popOver!.current.style.left = `${e?.pageX}px`
-    }
 
-    setActiveKey(key)
-  }
-  const handleMouseUp = (e: SyntheticEvent) => {
-    e.stopPropagation()
-    setActiveKey(0)
-  }
-  const Items = (props: ItemType) => {
-    const { id, position, name } = props
-    return (
-      <div className="container-wrap">
-        <Tooltip label={name}>
-          <div className={classNames("learn-step", activeKey === id && 'click')
-          }
-            onMouseUp={handleMouseUp}
-            onMouseDown={(e) => handleMouseDown(e, id)}
-            onMouseLeave={handleMouseUp}
-
-            style={{ left: `${position * 40}px` }}
-          >
-            <CheckIcon w={6} h={6} color="#f89200" />
-
-          </div >
-
-        </Tooltip>
-      </div>
-
-    )
-  }
   const fakeData = [{
     id: 'a',
     name: 'Level 1',
@@ -59,23 +42,68 @@ const Learn = (props: Props) => {
     data: [
       {
         id: 1,
-        name: 'Gọi đồ uống'
+        name: 'Gọi đồ uống',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 2,
-        name: 'Chào hỏi'
+        name: 'Chào hỏi',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 3,
-        name: 'Gọi đồ uống 2'
+        name: 'Gọi đồ uống 2',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 4,
-        name: 'Chào hỏi 2'
+        name: 'Chào hỏi 2',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 5,
-        name: 'Gọi đồ uống 3'
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 6,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 7,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 8,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 9,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 10,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 11,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 12,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
+      },
+      {
+        id: 13,
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       }
     ]
   },
@@ -86,43 +114,28 @@ const Learn = (props: Props) => {
     data: [
       {
         id: 6,
-        name: 'Gọi đồ uống'
+        name: 'Gọi đồ uống',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 7,
-        name: 'Chào hỏi'
+        name: 'Chào hỏi',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 8,
-        name: 'Gọi đồ uống 2'
+        name: 'Gọi đồ uống 2',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 9,
-        name: 'Chào hỏi 2'
+        name: 'Chào hỏi 2',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       },
       {
         id: 10,
-        name: 'Gọi đồ uống 3'
-      },
-      {
-        id: 11,
-        name: 'Gọi đồ uống 4'
-      },
-      {
-        id: 12,
-        name: 'Chào hỏi 5'
-      },
-      {
-        id: 13,
-        name: 'Gọi đồ uống 6'
-      },
-      {
-        id: 14,
-        name: 'Chào hỏi 7'
-      },
-      {
-        id: 15,
-        name: 'Gọi đồ uống 8'
+        name: 'Gọi đồ uống 3',
+        detail: 'Đồ uống ngon thì cần có bạn hiền'
       }
     ]
   }
@@ -172,15 +185,12 @@ const Learn = (props: Props) => {
             </Box>
             <div className="learn-container">
               {x?.data.map(item =>
-                <Items key={item?.id} id={item?.id} position={item?.position} name={item?.name} />
+                <Items key={item?.id} id={item?.id} position={item?.position} name={item?.name} detail={item?.detail} />
               )}
 
             </div>
           </div>
         )}
-        <div className='popover' ref={popOver}>
-          <span>This is text for learning doulingo 2.0</span>
-        </div>
       </Center>
       <Center w='50%'>
         <Box position="sticky">

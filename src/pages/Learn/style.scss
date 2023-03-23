@@ -13,14 +13,6 @@
       font-weight: 500;
     }
   }
-  
-}
-.popover{
-  position: absolute;
-  top: 0;
-  border-radius: toRem(10);
-  padding: toRem(20);
-  background-color: #cd7900;
 }
 .learn-container {
   display: flex;
@@ -28,34 +20,86 @@
   gap: toRem(30);
   margin: toRem(16) 0;
   
-  .container-wrap {
+  .learn-step {
     position: relative;
-    .learn-step {
-      position: relative;
-      cursor: pointer;
-      width: toRem(70);
-      height: toRem(70);
-      border-radius: 50%;
-      background-color: #ffd333;
-      border: 5px solid #4d3c3c5f;
-      box-shadow: 0 8px 3px 1px #818080;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.1s;
+    cursor: pointer;
+    width: toRem(70);
+    height: toRem(70);
+    border-radius: 50%;
+    background-color: #ffd333;
+    border: 5px solid #4d3c3c5f;
+    box-shadow: 0 8px 3px 1px #818080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.1s;
+    &:hover {
+      &:after {
+        content: attr(data-text);
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        width: max-content;
+        transform: translateX(-50%);
+        background-color: #464545;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        z-index: 2;
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -20%;
+        border: 10px solid #464545;
+        border-color: transparent #464545 transparent transparent;
+        transform: rotate(90deg);
+        z-index: 3;
+      }
+      &:active {
+        transform: scale(0.9);
+        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+      }
     }
-   
+    &[data-left="1"] {
+      left: 70px;
+    }
+    &[data-left="0"] {
+      left: 0;
+    }
+    &[data-left="-1"] {
+      left: -70px;
+    }
+    &[data-left="2"] {
+      left: 120px;
+    }
+    &[data-left="-2"] {
+      left: -120px;
+    }
+
     .arrow {
       position: absolute;
-      z-index: 999;
-      border-radius:toRem(10);
+      // z-index: 999;
+      border-radius: toRem(10);
       width: toRem(250);
       height: toRem(80);
       background-color: #ffd333;
     }
   }
-  .click {
-    transform: translateY(4px);
-    box-shadow: unset;
+}
+.custom-content {
+  display: flex;
+  flex-direction: column;
+  color: #454545;
+  font-style: italic;
+  .custom-button{
+    border: 1px solid #ffd333;
+    border-radius: 5px;
+    background-color: rgba(66, 153, 225, 0.6);
+    font-weight: 500;
+    width: max-content;
+    margin-top: toRem(10);
+    padding: toRem(5) toRem(10);
+    color: rgb(95, 88, 74);
   }
 }
