@@ -1,6 +1,6 @@
 import PopoverCustom from '@/component/PopoverCustom';
 import { CheckIcon } from '@chakra-ui/icons';
-import { Box, Button, Center, Flex, Portal } from '@chakra-ui/react';
+import { Box, Button, Center, Flex } from '@chakra-ui/react';
 import classNames from 'classnames';
 import './style.scss';
 type Props = {}

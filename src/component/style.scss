@@ -6,6 +6,7 @@
   padding: toRem(20);
   border-radius: toRem(8);
   background-color: #edb303;
+  transform: translateX(-50%);
   &:after {
     content: " ";
     border-top: 11px solid #edb303;

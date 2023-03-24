@@ -64,13 +64,15 @@ export default function PopoverCustom({
     const refInstance = useComponentVisible(dismiss);
     const handleSize = () => {
         const trigger = ref.current;
-        if (trigger == null) {
+        const collection = document.getElementsByClassName("content-popover");
+
+        if (trigger == null || collection == null) {
             return;
         }
         const { offsetTop, offsetLeft } = (trigger as HTMLElement);
         // const rect = element.getBoundingClientRect();
         const triggerButton = trigger.getBoundingClientRect();
-        const coords = getPopoverCoords(triggerButton, offsetLeft, offsetTop);
+        const coords = getPopoverCoords(triggerButton, offsetLeft, offsetTop, collection[collection.length - 1].getBoundingClientRect());
         return coords;
     }
     useLayoutEffect(() => {
@@ -89,18 +91,18 @@ export default function PopoverCustom({
         }
         const mergeRef = mergeRefs([refContent, refInstance])
         const cloneContent = () => {
-            
+
             const trigger = ref.current;
             if (trigger == null) {
                 return;
             }
-            const coords = handleSize();
+
             return (
                 <ChakraProvider>
                     <div
                         ref={mergeRef}
                         className="content-popover"
-                        style={{ position: 'absolute', left: coords?.left, top: coords?.top }}
+                        style={{ position: 'absolute', visibility: 'hidden' }}
                     >
                         {content}
                     </div>
@@ -113,6 +115,12 @@ export default function PopoverCustom({
         const container = document.body.appendChild(document.createElement('div'));
         const root = createRoot(container);
         root.render(cloneContent());
+        setTimeout(() => {
+            const coords = handleSize();
+            refContent.current!.style.top = coords?.top + 'px'
+            refContent.current!.style.left = coords?.left + 'px'
+            refContent.current!.style.visibility = 'visible'
+        }, 0)
         // Get the size of the element
     };
     const childrenToTriggerPopover = React.cloneElement(children, {
@@ -148,12 +156,12 @@ function getPopoverCoords(
     triggerRect: DOMRect,
     offsetLeft: number,
     offsetTop: number,
+    collection: DOMRect
 ) {
-
     // TODO: cover all positions
-    let top = offsetTop - triggerRect.width - 10;
+    let top = offsetTop - collection.height - 10;
     let left =
-        offsetLeft - triggerRect.width - triggerRect.width / 2
+        offsetLeft + triggerRect.width - 25
         ;
 
     // failover to top if there is not enough space
